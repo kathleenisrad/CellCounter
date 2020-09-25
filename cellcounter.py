@@ -12,10 +12,16 @@ import numpy as np
 import imutils
 import cv2
 
-#load image in greyscale
-image = cv2.imread(r'file path')
-grey = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+#load image
+infile = 'file path of image' 
+image = cv2.imread(infile)
 
+#normalize a 16-bit tif image
+if 'tif' in infile:
+    image = cv2.normalize(image, dst=None, alpha=0, beta=65535, norm_type=cv2.NORM_MINMAX)
+
+#convert to greyscale
+grey = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 #thresholding
 ret, thresh = cv2.threshold(grey, 49, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
@@ -38,11 +44,15 @@ for label in np.unique(labels):
 	contours = imutils.grab_contours(contours)
 
 # draw contours
-	drawn = cv2.drawContours(grey, contours, -1, (255,255,255), 1)
+	drawn = cv2.drawContours(grey, contours, -1, (0,255,0), 1)
+
+#drawing a rectangle in which text will live
+x,y,w,h = 0,0,375,75
+cv2.rectangle(drawn, (x,x), (x + w, y + h), (0,0,0), -1)
 
 #displaying number of cells in picture    
 font                   = cv2.FONT_HERSHEY_DUPLEX
-bottomLeftCornerOfText = (500,500)
+TopLeftCornerOfText = (10,10)
 fontScale              = 1
 fontColor              = (255,255,255)
 lineType               = 2
@@ -51,20 +61,18 @@ t = len(np.unique(labels))-1
 s = 'number of cells: {0}'.format(t)
 
 cv2.putText(drawn, s, 
-    bottomLeftCornerOfText, 
+    (x + int(w/10), y + int(h/2)), 
     font, 
     fontScale,
     fontColor,
     lineType)
 
 # show the output image
-x = cv2.imshow("result", drawn)
-cv2.waitKey(0)
-cv2.waitKey(0) 
+cv2.imshow("result", drawn)
 
 #save the output image
-directory = r'file path'
+directory = 'file path of where you want to save it to'
 os.chdir(directory) 
-filename = 'result.jpg'
-cv2.imwrite(filename, x) 
+filename = 'output.jpg'
+cv2.imwrite(filename, drawn) 
 cv2.waitKey(0)
