@@ -8,7 +8,7 @@ This script counts cells
 ![alt text](https://github.com/kathleenisrad/CellCounter/blob/master/output.jpg?raw=true)
 
 ##Tiff Input:
-![alt text](https://github.com/kathleenisrad/CellCounter/blob/master/original_tif_input.jpg?raw=true)
+![alt text](https://github.com/kathleenisrad/CellCounter/blob/master/original_tif_input.tif?raw=true)
 
 ##Normalized Tiff Input:
 ![alt text](https://github.com/kathleenisrad/CellCounter/blob/master/normalized_tif_input.jpg?raw=true) 
