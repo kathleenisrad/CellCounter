@@ -43,7 +43,7 @@ for label in np.unique(labels):
 	contours = imutils.grab_contours(contours)
 
 # draw contours
-	drawn = cv2.drawContours(grey, contours, -1, (0,255,0), 1)
+	drawn = cv2.drawContours(grey, contours, -1, (255,255,255), 1)
 
 #drawing a rectangle in which text will live
 x,y,w,h = 0,0,375,75
