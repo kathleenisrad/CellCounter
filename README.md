@@ -27,5 +27,5 @@ Sample images of cells are included
 ## JPG Output:
 ![alt text](https://github.com/kathleenisrad/CellCounter/blob/master/jpgoutput.jpg?raw=true)
 
-## Tiff Output:
+## TIF Output:
 ![alt text](https://github.com/kathleenisrad/CellCounter/blob/master/output_tif.jpg?raw=true) 
